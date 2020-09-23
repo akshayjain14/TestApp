@@ -1,0 +1,4 @@
+${PODS_ROOT}/Target Support Files/Pods-SoftvisionTestApp/Pods-SoftvisionTestApp-frameworks.sh
+${BUILT_PRODUCTS_DIR}/HPGradientLoading/HPGradientLoading.framework
+${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
+${BUILT_PRODUCTS_DIR}/VisualEffectView/VisualEffectView.framework

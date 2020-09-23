@@ -1,0 +1,24 @@
+PODS:
+  - HPGradientLoading (1.3.3):
+    - SnapKit (~> 5.0.0)
+    - VisualEffectView (~> 4.0.0)
+  - SnapKit (5.0.1)
+  - VisualEffectView (4.0.2)
+
+DEPENDENCIES:
+  - HPGradientLoading
+
+SPEC REPOS:
+  trunk:
+    - HPGradientLoading
+    - SnapKit
+    - VisualEffectView
+
+SPEC CHECKSUMS:
+  HPGradientLoading: b9e46a196b8caf68bd520de3ae02fcddbf5c3781
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  VisualEffectView: 8c05bdc77490d84aabfa9fd17b1ffd6476da0e2c
+
+PODFILE CHECKSUM: db1eb3f73d5070bd79812c6ca4ae7395b7408f7c
+
+COCOAPODS: 1.9.3
