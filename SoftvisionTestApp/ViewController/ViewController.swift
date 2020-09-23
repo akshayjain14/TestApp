@@ -14,7 +14,7 @@ enum CONSTANT: String {
     case cellID = "myCell"
 }
 
-class CustomTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let infoTableView = UITableView()
     let repository = ModelDataRequest(apiClient: NetworkServices())
@@ -24,7 +24,7 @@ class CustomTableViewController: UIViewController, UITableViewDataSource, UITabl
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
-            #selector(CustomTableViewController.handleRefresh(_:)),
+            #selector(ViewController.handleRefresh(_:)),
                                  for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.red
         
@@ -75,7 +75,7 @@ class CustomTableViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
 }
-extension CustomTableViewController {
+extension ViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return imageModelData.count
