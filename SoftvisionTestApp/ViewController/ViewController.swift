@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 enum CONSTANT: String {
     case BASEURL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
     case cellID = "myCell"
@@ -17,7 +16,7 @@ enum CONSTANT: String {
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let infoTableView = UITableView()
-    var viewModel : ViewModel?
+    var viewModel: ViewModel?
     
     var imageModelData = [Rows]()
     
@@ -38,10 +37,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         infoTableView.rowHeight = UITableView.automaticDimension
         
         infoTableView.translatesAutoresizingMaskIntoConstraints = false
-        infoTableView.topAnchor.constraint(equalTo:view.safeAreaLayoutGuide.topAnchor).isActive = true
-        infoTableView.leftAnchor.constraint(equalTo:view.safeAreaLayoutGuide.leftAnchor).isActive = true
-        infoTableView.rightAnchor.constraint(equalTo:view.safeAreaLayoutGuide.rightAnchor).isActive = true
-        infoTableView.bottomAnchor.constraint(equalTo:view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        infoTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        infoTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true
+        infoTableView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor).isActive = true
+        infoTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         
         infoTableView.dataSource = self
         infoTableView.delegate = self
@@ -49,18 +48,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.infoTableView.addSubview(self.refreshControl)
        callToViewModelForUIUpdate()
     }
-    func callToViewModelForUIUpdate(){
+    func callToViewModelForUIUpdate() {
         
         self.viewModel =  ViewModel()
         self.viewModel?.bindViewModelToController = {
             self.updateDataSource()
         }
     }
-    func updateDataSource(){
-         guard let ImageData = self.viewModel?.imageModel.rows else {
+    func updateDataSource() {
+        
+         guard let imageData = self.viewModel?.imageModel.rows else {
                             return
-                       }
-        self.imageModelData = ImageData
+            
+        }
+        self.imageModelData = imageData
         DispatchQueue.main.async {
         self.navigationItem.title = self.viewModel?.imageModel.title
         self.infoTableView.reloadData()
@@ -80,7 +81,9 @@ extension ViewController {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:disable force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: CONSTANT.cellID.rawValue, for: indexPath) as! TableViewCell
+        // swiftlint:enable force_cast
         cell.setupImage(with: self.imageModelData[indexPath.row])
         return cell
     }

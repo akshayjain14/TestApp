@@ -10,13 +10,13 @@ import Foundation
 
 class NetworkServices: NSObject {
 
-func apiToData(completion : @escaping (ImageModel) -> ()) {
+func apiToData(completion : @escaping (ImageModel) -> Void) {
     
     guard let url = URL(string: CONSTANT.BASEURL.rawValue) else {
         return
     }
     
-    URLSession.shared.dataTask(with: url) { (data, urlResponse, error) in
+    URLSession.shared.dataTask(with: url) { (data, _, _) in
            if let data = data {
                
                let jsonDecoder = JSONDecoder()
@@ -24,14 +24,11 @@ func apiToData(completion : @escaping (ImageModel) -> ()) {
                    return
                }
             
-               let fetchedData = try! jsonDecoder.decode(ImageModel.self, from: utf8Data)
+               let fetchedData = try? jsonDecoder.decode(ImageModel.self, from: utf8Data)
            
-            completion(fetchedData)
+            completion(fetchedData!)
            }
            
        }.resume()
    }
-    
-    
-    
 }

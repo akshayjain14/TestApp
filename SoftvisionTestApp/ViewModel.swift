@@ -8,16 +8,16 @@
 
 import Foundation
 
-class ViewModel : NSObject {
+class ViewModel: NSObject {
     
-    private var apiService : NetworkServices!
-    private(set) var imageModel : ImageModel! {
+    private var apiService: NetworkServices!
+    private(set) var imageModel: ImageModel! {
         didSet {
             self.bindViewModelToController()
         }
     }
     
-    var bindViewModelToController : (() -> ()) = {}
+    var bindViewModelToController : (() -> Void) = {}
     
     override init() {
         super.init()
@@ -26,10 +26,11 @@ class ViewModel : NSObject {
     }
     
     func callFuncToGetModelData() {
-        self.apiService.apiToData { (ImageModel) in
-            self.imageModel = ImageModel
+        self.apiService.apiToData { (data) in
+            self.imageModel = data
         }
      
     }
+    
 }
 

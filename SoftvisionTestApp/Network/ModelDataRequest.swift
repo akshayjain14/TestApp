@@ -17,9 +17,9 @@ init(apiClient: NetworkServices) {
 self.apiClient = apiClient
 }
 
-func getImageModelData(UrlString:String, completion: @escaping ((Result<ImageModel>) -> Void)) {
+func getImageModelData(urlString: String, completion: @escaping ((Result<ImageModel>) -> Void)) {
 
-let resource = Resource(url: URL(string:UrlString)!)
+let resource = Resource(url: URL(string: UrlString)!)
 apiClient.apiCall(resource) { (result) in
     switch result {
     case .success(let data):

@@ -18,7 +18,6 @@
 		51A8A209251B6668007699FF /* Rows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8A208251B6668007699FF /* Rows.swift */; };
 		51A8A212251B6783007699FF /* SoftvisionTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8A211251B6783007699FF /* SoftvisionTestAppTests.swift */; };
 		51EAA7BA251DC4CB00393A9B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EAA7B9251DC4CB00393A9B /* ViewModel.swift */; };
-		51EAA7BC251DFFDE00393A9B /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EAA7BB251DFFDE00393A9B /* CellViewModel.swift */; };
 		6C9404C06BC69E20A01A99A6 /* Pods_SoftvisionTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DFAE258C3AF7B2E9FB1896 /* Pods_SoftvisionTestApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +48,6 @@
 		51A8A211251B6783007699FF /* SoftvisionTestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftvisionTestAppTests.swift; sourceTree = "<group>"; };
 		51A8A213251B6783007699FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51EAA7B9251DC4CB00393A9B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		51EAA7BB251DFFDE00393A9B /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		9FE7836B9B8E37E30A6B49D2 /* Pods-SoftvisionTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoftvisionTestApp.debug.xcconfig"; path = "Target Support Files/Pods-SoftvisionTestApp/Pods-SoftvisionTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BF74311D73F94B0DB31D0C91 /* Pods-SoftvisionTestAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoftvisionTestAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SoftvisionTestAppTests/Pods-SoftvisionTestAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C85444ACA111DC1BF07B8070 /* Pods-SoftvisionTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoftvisionTestApp.release.xcconfig"; path = "Target Support Files/Pods-SoftvisionTestApp/Pods-SoftvisionTestApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				51A8A1F4251B60CC007699FF /* Info.plist */,
 				51A8A1F1251B60CC007699FF /* LaunchScreen.storyboard */,
 				51EAA7B9251DC4CB00393A9B /* ViewModel.swift */,
-				51EAA7BB251DFFDE00393A9B /* CellViewModel.swift */,
 			);
 			path = SoftvisionTestApp;
 			sourceTree = "<group>";
@@ -187,6 +184,7 @@
 				51A8A1E0251B60B6007699FF /* Frameworks */,
 				51A8A1E1251B60B6007699FF /* Resources */,
 				82AFA90B40E51006C5298ED7 /* [CP] Embed Pods Frameworks */,
+				51EAA7C4251E1C2F00393A9B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -296,6 +294,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		51EAA7C4251E1C2F00393A9B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		82AFA90B40E51006C5298ED7 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -344,7 +359,6 @@
 			files = (
 				51A8A204251B65F3007699FF /* TableViewCell.swift in Sources */,
 				51A8A207251B6658007699FF /* ImageModel.swift in Sources */,
-				51EAA7BC251DFFDE00393A9B /* CellViewModel.swift in Sources */,
 				51A8A209251B6668007699FF /* Rows.swift in Sources */,
 				51A8A1FE251B6303007699FF /* NetworkServices.swift in Sources */,
 				51A8A1FB251B619F007699FF /* ViewController.swift in Sources */,
@@ -433,7 +447,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -487,7 +501,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -504,7 +518,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SoftvisionTestApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -523,7 +537,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = SoftvisionTestApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

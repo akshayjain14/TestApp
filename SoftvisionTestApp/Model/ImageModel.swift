@@ -7,9 +7,9 @@
 //
 
 import Foundation
-struct ImageModel : Codable {
-    let title : String?
-    let rows : [Rows]?
+struct ImageModel: Codable {
+    let title: String?
+    let rows: [Rows]?
 
     enum CodingKeys: String, CodingKey {
 
