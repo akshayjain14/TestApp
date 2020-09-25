@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import HPGradientLoading
+
 
 enum CONSTANT: String {
     case BASEURL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
@@ -17,7 +17,7 @@ enum CONSTANT: String {
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     let infoTableView = UITableView()
-    let repository = ModelDataRequest(apiClient: NetworkServices())
+    var viewModel : ViewModel?
     
     var imageModelData = [Rows]()
     
@@ -47,30 +47,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         infoTableView.delegate = self
         infoTableView.register(TableViewCell.self, forCellReuseIdentifier: CONSTANT.cellID.rawValue)
         self.infoTableView.addSubview(self.refreshControl)
-        self.callAPI()
+       callToViewModelForUIUpdate()
     }
-    
-    func callAPI() {
-        HPGradientLoading.shared.showLoading()
-        repository.getImageModelData(UrlString:CONSTANT.BASEURL.rawValue) { (result) in
-            HPGradientLoading.shared.dismiss()
-            switch result {
-            case  .success(let item):
-                guard let ImageData = item.rows else {
-                    return
-                }
-                self.imageModelData = ImageData
-                self.navigationItem.title = item.title
-                self.infoTableView.reloadData()
-                break
-            case .failure( _):
-                break
-            }
+    func callToViewModelForUIUpdate(){
+        
+        self.viewModel =  ViewModel()
+        self.viewModel?.bindViewModelToController = {
+            self.updateDataSource()
         }
     }
+    func updateDataSource(){
+         guard let ImageData = self.viewModel?.imageModel.rows else {
+                            return
+                       }
+        self.imageModelData = ImageData
+        DispatchQueue.main.async {
+        self.navigationItem.title = self.viewModel?.imageModel.title
+        self.infoTableView.reloadData()
+        }
+       }
+    
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        
-        callAPI()
+        callToViewModelForUIUpdate()
         refreshControl.endRefreshing()
     }
     
@@ -83,10 +81,7 @@ extension ViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CONSTANT.cellID.rawValue, for: indexPath) as! TableViewCell
-        
-        cell.titleLabel.text = self.imageModelData[indexPath.row].title
-        cell.DescriptionLabel.text = self.imageModelData[indexPath.row].description
-        cell.setupImage(with: self.imageModelData[indexPath.row].imageHref ?? "")
+        cell.setupImage(with: self.imageModelData[indexPath.row])
         return cell
     }
     

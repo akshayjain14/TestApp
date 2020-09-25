@@ -8,47 +8,30 @@
 
 import Foundation
 
-struct Resource {
-let url: URL
-let method: String = "GET"
-}
+class NetworkServices: NSObject {
 
-
-enum Result<T> {
-case success(T)
-case failure(Error)
-}
-
-enum APIClientError: Error {
-case noData
-}
-
-
-extension URLRequest {
-
-init(_ resource: Resource) {
-    self.init(url: resource.url)
-    self.httpMethod = resource.method
-}
-
-}
-
-class NetworkServices {
-
-func apiCall(_ resource: Resource, result: @escaping ((Result<Data>) -> Void)) {
-        let request = URLRequest(resource)
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let `data` = data else {
-                result(.failure(APIClientError.noData))
-                return
-            }
-            if let `error` = error {
-                result(.failure(error))
-                return
-            }
-            result(.success(data))
-        }
-        task.resume()
+func apiToData(completion : @escaping (ImageModel) -> ()) {
     
-}
+    guard let url = URL(string: CONSTANT.BASEURL.rawValue) else {
+        return
+    }
+    
+    URLSession.shared.dataTask(with: url) { (data, urlResponse, error) in
+           if let data = data {
+               
+               let jsonDecoder = JSONDecoder()
+               guard let utf8Data = String(decoding: data, as: UTF8.self).data(using: .utf8) else {
+                   return
+               }
+            
+               let fetchedData = try! jsonDecoder.decode(ImageModel.self, from: utf8Data)
+           
+            completion(fetchedData)
+           }
+           
+       }.resume()
+   }
+    
+    
+    
 }

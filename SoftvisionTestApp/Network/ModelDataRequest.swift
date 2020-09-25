@@ -8,10 +8,10 @@
 
 import Foundation
 
-final class ModelDataRequest {
+ class ModelDataRequest {
 
 private let apiClient: NetworkServices!
-typealias CompletionHandler = (_ success:Bool) -> Void
+//typealias CompletionHandler = (_ success:Bool) -> Void
 
 init(apiClient: NetworkServices) {
 self.apiClient = apiClient

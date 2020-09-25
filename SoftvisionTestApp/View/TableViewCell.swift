@@ -10,6 +10,14 @@ import UIKit
 
 class TableViewCell: UITableViewCell {
 
+//    var modelData : Rows? {
+//        didSet {
+//            titleLabel.text = modelData?.title
+//            DescriptionLabel.text = modelData?.description
+//        }
+//    }
+    
+    
 private let myImageView: UIImageView = {
     let imageView = UIImageView(frame: .zero)
     imageView.contentMode = .scaleAspectFit
@@ -73,13 +81,19 @@ myImageView.leadingAnchor.constraint(equalTo:self.contentView.leadingAnchor, con
     
 }
 
-func setupImage(with imagePath: String) {
+    func setupImage(with modelData: Rows) {
+        
+        self.DescriptionLabel.text = modelData.description
+       self.titleLabel.text = modelData.title
     
-    guard let url = URL(string: imagePath) else {
+        guard let imagePath = modelData.imageHref else {
+            return
+        }
+        guard let url = URL(string: imagePath) else {
         self.myImageView.image = nil
         return
     }
-    if let imageFromCache = imageCache.object(forKey: imagePath as AnyObject) {
+    if let imageFromCache = imageCache.object(forKey: modelData.imageHref as AnyObject) {
         self.myImageView.image = imageFromCache as? UIImage
         return
     }
@@ -88,7 +102,7 @@ func setupImage(with imagePath: String) {
         
         DispatchQueue.main.async() { [weak self] in
             guard let imageToCache = UIImage(data: data) else { return }
-            self?.imageCache.setObject(imageToCache, forKey: imagePath as AnyObject)
+            self?.imageCache.setObject(imageToCache, forKey: modelData.imageHref as AnyObject)
             self?.myImageView.image = UIImage(data: data)
         }
     }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,11 +13,12 @@
 		51A8A1F3251B60CC007699FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A8A1F1251B60CC007699FF /* LaunchScreen.storyboard */; };
 		51A8A1FB251B619F007699FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8A1FA251B619F007699FF /* ViewController.swift */; };
 		51A8A1FE251B6303007699FF /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8A1FD251B6303007699FF /* NetworkServices.swift */; };
-		51A8A200251B642B007699FF /* ModelDataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8A1FF251B642B007699FF /* ModelDataRequest.swift */; };
 		51A8A204251B65F3007699FF /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8A203251B65F3007699FF /* TableViewCell.swift */; };
 		51A8A207251B6658007699FF /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8A206251B6658007699FF /* ImageModel.swift */; };
 		51A8A209251B6668007699FF /* Rows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8A208251B6668007699FF /* Rows.swift */; };
 		51A8A212251B6783007699FF /* SoftvisionTestAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8A211251B6783007699FF /* SoftvisionTestAppTests.swift */; };
+		51EAA7BA251DC4CB00393A9B /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EAA7B9251DC4CB00393A9B /* ViewModel.swift */; };
+		51EAA7BC251DFFDE00393A9B /* CellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51EAA7BB251DFFDE00393A9B /* CellViewModel.swift */; };
 		6C9404C06BC69E20A01A99A6 /* Pods_SoftvisionTestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02DFAE258C3AF7B2E9FB1896 /* Pods_SoftvisionTestApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,13 +42,14 @@
 		51A8A1F4251B60CC007699FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51A8A1FA251B619F007699FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		51A8A1FD251B6303007699FF /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
-		51A8A1FF251B642B007699FF /* ModelDataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataRequest.swift; sourceTree = "<group>"; };
 		51A8A203251B65F3007699FF /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		51A8A206251B6658007699FF /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		51A8A208251B6668007699FF /* Rows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rows.swift; sourceTree = "<group>"; };
 		51A8A20F251B6783007699FF /* SoftvisionTestAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SoftvisionTestAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51A8A211251B6783007699FF /* SoftvisionTestAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoftvisionTestAppTests.swift; sourceTree = "<group>"; };
 		51A8A213251B6783007699FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51EAA7B9251DC4CB00393A9B /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		51EAA7BB251DFFDE00393A9B /* CellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellViewModel.swift; sourceTree = "<group>"; };
 		9FE7836B9B8E37E30A6B49D2 /* Pods-SoftvisionTestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoftvisionTestApp.debug.xcconfig"; path = "Target Support Files/Pods-SoftvisionTestApp/Pods-SoftvisionTestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		BF74311D73F94B0DB31D0C91 /* Pods-SoftvisionTestAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoftvisionTestAppTests.debug.xcconfig"; path = "Target Support Files/Pods-SoftvisionTestAppTests/Pods-SoftvisionTestAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C85444ACA111DC1BF07B8070 /* Pods-SoftvisionTestApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoftvisionTestApp.release.xcconfig"; path = "Target Support Files/Pods-SoftvisionTestApp/Pods-SoftvisionTestApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +107,8 @@
 				51A8A1EF251B60CC007699FF /* Assets.xcassets */,
 				51A8A1F4251B60CC007699FF /* Info.plist */,
 				51A8A1F1251B60CC007699FF /* LaunchScreen.storyboard */,
+				51EAA7B9251DC4CB00393A9B /* ViewModel.swift */,
+				51EAA7BB251DFFDE00393A9B /* CellViewModel.swift */,
 			);
 			path = SoftvisionTestApp;
 			sourceTree = "<group>";
@@ -113,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				51A8A1FD251B6303007699FF /* NetworkServices.swift */,
-				51A8A1FF251B642B007699FF /* ModelDataRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -169,7 +172,6 @@
 				BF74311D73F94B0DB31D0C91 /* Pods-SoftvisionTestAppTests.debug.xcconfig */,
 				355B7F9999F5A2F4D275DCD7 /* Pods-SoftvisionTestAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -342,10 +344,11 @@
 			files = (
 				51A8A204251B65F3007699FF /* TableViewCell.swift in Sources */,
 				51A8A207251B6658007699FF /* ImageModel.swift in Sources */,
+				51EAA7BC251DFFDE00393A9B /* CellViewModel.swift in Sources */,
 				51A8A209251B6668007699FF /* Rows.swift in Sources */,
 				51A8A1FE251B6303007699FF /* NetworkServices.swift in Sources */,
-				51A8A200251B642B007699FF /* ModelDataRequest.swift in Sources */,
 				51A8A1FB251B619F007699FF /* ViewController.swift in Sources */,
+				51EAA7BA251DC4CB00393A9B /* ViewModel.swift in Sources */,
 				51A8A1E7251B60B6007699FF /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -430,7 +433,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -484,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
