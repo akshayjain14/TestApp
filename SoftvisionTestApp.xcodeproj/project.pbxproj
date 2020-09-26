@@ -101,11 +101,10 @@
 				51A8A205251B6623007699FF /* Model */,
 				51A8A1FC251B61D9007699FF /* Network */,
 				51A8A202251B65CA007699FF /* View */,
-				51A8A20A251B6723007699FF /* ViewController */,
+				51A8A20A251B6723007699FF /* ViewModel */,
 				51A8A1EF251B60CC007699FF /* Assets.xcassets */,
 				51A8A1F4251B60CC007699FF /* Info.plist */,
 				51A8A1F1251B60CC007699FF /* LaunchScreen.storyboard */,
-				51EAA7B9251DC4CB00393A9B /* ViewModel.swift */,
 			);
 			path = SoftvisionTestApp;
 			sourceTree = "<group>";
@@ -121,6 +120,7 @@
 		51A8A202251B65CA007699FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				51A8A1FA251B619F007699FF /* ViewController.swift */,
 				51A8A203251B65F3007699FF /* TableViewCell.swift */,
 			);
 			path = View;
@@ -135,12 +135,12 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		51A8A20A251B6723007699FF /* ViewController */ = {
+		51A8A20A251B6723007699FF /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				51A8A1FA251B619F007699FF /* ViewController.swift */,
+				51EAA7B9251DC4CB00393A9B /* ViewModel.swift */,
 			);
-			path = ViewController;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		51A8A210251B6783007699FF /* SoftvisionTestAppTests */ = {
