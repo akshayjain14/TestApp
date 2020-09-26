@@ -102,4 +102,11 @@ myImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, co
 func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
     URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
 }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        myImageView.image = nil
+        descriptionLabel.text = ""
+        titleLabel.text = ""
+    }
 }
