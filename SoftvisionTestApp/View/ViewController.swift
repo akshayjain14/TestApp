@@ -46,27 +46,24 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         infoTableView.delegate = self
         infoTableView.register(TableViewCell.self, forCellReuseIdentifier: CONSTANT.cellID.rawValue)
         self.infoTableView.addSubview(self.refreshControl)
-       callToViewModelForUIUpdate()
+        callToViewModelForUIUpdate()
     }
     func callToViewModelForUIUpdate() {
-        
         self.viewModel =  ViewModel()
         self.viewModel?.bindViewModelToController = {
             self.updateDataSource()
         }
     }
     func updateDataSource() {
-        
-         guard let imageData = self.viewModel?.imageModel.rows else {
-                            return
-            
+        guard let imageData = self.viewModel?.imageModel.rows else {
+            return
         }
         self.imageModelData = imageData
         DispatchQueue.main.async {
-        self.navigationItem.title = self.viewModel?.imageModel.title
-        self.infoTableView.reloadData()
+            self.navigationItem.title = self.viewModel?.imageModel.title
+            self.infoTableView.reloadData()
         }
-       }
+    }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         callToViewModelForUIUpdate()

@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import HPGradientLoading
 
 class ViewModel: NSObject {
     
     private var apiService: NetworkServices!
+   
     private(set) var imageModel: ImageModel! {
         didSet {
             self.bindViewModelToController()
@@ -19,6 +21,16 @@ class ViewModel: NSObject {
     
     var bindViewModelToController : (() -> Void) = {}
     
+    var isLoading: Bool = false {
+        didSet {
+            if isLoading {
+                HPGradientLoading.shared.showLoading()
+            } else {
+                HPGradientLoading.shared.dismiss()
+            }
+           
+        }
+    }
     override init() {
         super.init()
         self.apiService =  NetworkServices()
@@ -26,11 +38,14 @@ class ViewModel: NSObject {
     }
     
     func callFuncToGetModelData() {
+        self.isLoading = true
         self.apiService.apiToData { (data) in
             self.imageModel = data
+            DispatchQueue.main.async {
+                self.isLoading = false
+            }
         }
-     
+        
     }
     
 }
-
