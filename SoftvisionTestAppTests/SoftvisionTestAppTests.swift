@@ -7,11 +7,11 @@
 //
 
 import XCTest
-
 @testable import SoftvisionTestApp
 
+// Test cases class for executing test cases
 class SoftvisionTestAppTests: XCTestCase {
-
+    ///ViewModel object For API Call
     var viewModel: ViewModel?
     
     override func setUpWithError() throws {
@@ -20,10 +20,9 @@ class SoftvisionTestAppTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-        
         super.tearDown()
     }
-
+/// Verifying api call getting Valid data
     func testValidCall() {
         let promise = expectation(description: "fetchedSuccess")
         viewModel =  ViewModel()

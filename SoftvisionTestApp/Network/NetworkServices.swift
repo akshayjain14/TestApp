@@ -10,7 +10,6 @@ import Foundation
 
 ///Network Seervice Class
 class NetworkServices: NSObject {
-
  /// URLsession Call to fetch data from API
 func apiToData(completion : @escaping (ImageModel) -> Void) {
     

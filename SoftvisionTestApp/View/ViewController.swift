@@ -80,7 +80,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 }
 ///TableView datasource
 extension ViewController {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return imageModelData.count
     }

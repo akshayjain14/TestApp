@@ -11,7 +11,6 @@ import UIKit
 /// Tableview Cell class
 
 class TableViewCell: UITableViewCell {
-    
     /// Property ImageView for image
     private let myImageView: UIImageView = {
         let imageView = UIImageView.init(image: UIImage(named: "placeholder"))
@@ -88,7 +87,6 @@ class TableViewCell: UITableViewCell {
      */
     
     func setUpCellInfo(with modelData: Rows) {
-        
         self.descriptionLabel.text = modelData.description
         self.titleLabel.text = modelData.title
         
