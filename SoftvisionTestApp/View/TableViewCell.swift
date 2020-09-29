@@ -8,14 +8,17 @@
 
 import UIKit
 
+/// Tableview Cell class
+
 class TableViewCell: UITableViewCell {
     
+    /// Property ImageView for image
     private let myImageView: UIImageView = {
         let imageView = UIImageView.init(image: UIImage(named: "placeholder"))
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
+    /// Property For Title Label
     let titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .left
@@ -24,7 +27,7 @@ class TableViewCell: UITableViewCell {
         label.textColor = UIColor.red
         return label
     }()
-    
+    /// Property Description Label
     let descriptionLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textAlignment = .left
@@ -36,16 +39,18 @@ class TableViewCell: UITableViewCell {
     
     let imageCache = NSCache<AnyObject, AnyObject>()
     
+    /// TableViewCell initailization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
         setupLayouts()
     }
-    
+    /// Required initialization
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    /// Adding Cell Properties in contentView
     private func setupViews() {
         contentView.clipsToBounds = true
         contentView.backgroundColor = .white
@@ -55,6 +60,7 @@ class TableViewCell: UITableViewCell {
         
     }
     
+   /** Setting Constraint */
     private func setupLayouts() {
         myImageView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -74,8 +80,14 @@ class TableViewCell: UITableViewCell {
         descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10.0).isActive = true
         
     }
+    /**setUpCellInfo  with Row
+      
+     - Parameters:
+     - modelData: Info for cell item
+     
+     */
     
-    func setupImage(with modelData: Rows) {
+    func setUpCellInfo(with modelData: Rows) {
         
         self.descriptionLabel.text = modelData.description
         self.titleLabel.text = modelData.title
@@ -107,9 +119,18 @@ class TableViewCell: UITableViewCell {
             }
         }
     }
+    
+    /** getData
+     - Parameters :
+     - url : Url to fetch image
+     - completion : Closure
+    
+    */
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
+    
+   ///Reset the cell before reuse
     
     override func prepareForReuse() {
         super.prepareForReuse()

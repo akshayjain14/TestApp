@@ -14,12 +14,14 @@ enum CONSTANT: String {
 }
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+    /// TableView Object
     let infoTableView = UITableView()
+    /// ViewModel object
     var viewModel: ViewModel?
-    
+    /// ModelData form API
     var imageModelData = [Rows]()
     
+    ///Refresh Control SetUp
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -30,6 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return refreshControl
     }()
     
+    ///Override ViewDidload
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = .red
@@ -49,12 +52,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.infoTableView.addSubview(self.refreshControl)
         callToViewModelForUIUpdate()
     }
+    ///API Call Through ViewModel
     func callToViewModelForUIUpdate() {
         self.viewModel =  ViewModel()
         self.viewModel?.bindViewModelToController = {
             self.updateDataSource()
         }
     }
+    ///Update Tableview UI
     func updateDataSource() {
         guard let imageData = self.viewModel?.imageModel.rows else {
             return
@@ -66,12 +71,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    ///Call to RefreshControl
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         callToViewModelForUIUpdate()
         refreshControl.endRefreshing()
     }
     
 }
+///TableView datasource
 extension ViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -82,7 +89,7 @@ extension ViewController {
         // swiftlint:disable force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: CONSTANT.cellID.rawValue, for: indexPath) as! TableViewCell
         // swiftlint:enable force_cast
-        cell.setupImage(with: self.imageModelData[indexPath.row])
+        cell.setUpCellInfo(with: self.imageModelData[indexPath.row])
         return cell
     }
     

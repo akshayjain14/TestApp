@@ -12,7 +12,6 @@ import XCTest
 
 class SoftvisionTestAppTests: XCTestCase {
 
-   
     var viewModel: ViewModel?
     
     override func setUpWithError() throws {

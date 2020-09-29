@@ -7,13 +7,16 @@
 //
 
 import Foundation
+/// Details Object Model
 struct Rows: Codable {
+    /// Subdetail title
     let title: String?
+    /// Description for country subdetail
     let description: String?
+    /// Image url path
     let imageHref: String?
-
+ /// Coding key with respect to response parsing string
     enum CodingKeys: String, CodingKey {
-
         case title
         case description
         case imageHref 

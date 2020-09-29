@@ -7,9 +7,11 @@
 //
 
 import Foundation
-
+/// Root structure For API Response
 struct ImageModel: Codable {
+    /// Country name title
     let title: String?
+     /// List of coutry detail object
     let rows: [Rows]?
 
     enum CodingKeys: String, CodingKey {

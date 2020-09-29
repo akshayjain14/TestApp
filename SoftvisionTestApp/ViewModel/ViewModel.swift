@@ -11,16 +11,20 @@ import HPGradientLoading
 
 class ViewModel: NSObject {
     
+    /// instance of NetworkServices
     private var apiService: NetworkServices!
    
+    /// Model Data  from API Call
     private(set) var imageModel: ImageModel! {
         didSet {
             self.bindViewModelToController()
         }
     }
     
+    ///Closure for ViewModel Binding
     var bindViewModelToController : (() -> Void) = {}
     
+    /// Loader Status
     var isLoading: Bool = false {
         didSet {
             if isLoading {
@@ -31,6 +35,8 @@ class ViewModel: NSObject {
            
         }
     }
+    
+    /// Overrding Initailization function
     override init() {
         super.init()
         HPGradientLoading.shared.configation.fromColor = .red
@@ -39,6 +45,7 @@ class ViewModel: NSObject {
         callFuncToGetModelData()
     }
     
+    ///Getting  details from API and responding to viewmodel handler
     func callFuncToGetModelData() {
         self.isLoading = true
         self.apiService.apiToData { (data) in
