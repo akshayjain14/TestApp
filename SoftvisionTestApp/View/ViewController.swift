@@ -32,6 +32,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = .red
         view.addSubview(infoTableView)
         infoTableView.estimatedRowHeight = 150
         infoTableView.rowHeight = UITableView.automaticDimension

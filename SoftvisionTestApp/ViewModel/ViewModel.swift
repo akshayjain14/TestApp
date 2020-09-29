@@ -33,6 +33,8 @@ class ViewModel: NSObject {
     }
     override init() {
         super.init()
+        HPGradientLoading.shared.configation.fromColor = .red
+        HPGradientLoading.shared.configation.toColor = .orange
         self.apiService =  NetworkServices()
         callFuncToGetModelData()
     }
