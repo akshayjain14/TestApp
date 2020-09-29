@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         refreshControl.addTarget(self, action:
             #selector(ViewController.handleRefresh(_:)),
                                  for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.red
+        refreshControl.tintColor = .red
         
         return refreshControl
     }()
@@ -39,7 +39,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         view.addSubview(infoTableView)
         infoTableView.estimatedRowHeight = 150
         infoTableView.rowHeight = UITableView.automaticDimension
-        
+        infoTableView.separatorColor = .red
         infoTableView.translatesAutoresizingMaskIntoConstraints = false
         infoTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         infoTableView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor).isActive = true

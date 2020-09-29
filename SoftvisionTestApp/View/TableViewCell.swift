@@ -23,7 +23,7 @@ class TableViewCell: UITableViewCell {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.textColor = UIColor.red
+        label.textColor = .red
         return label
     }()
     /// Property Description Label
@@ -32,7 +32,7 @@ class TableViewCell: UITableViewCell {
         label.textAlignment = .left
         label.numberOfLines = 0
         label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = UIColor.darkGray
+        label.textColor = .darkGray
         return label
     }()
     
@@ -41,6 +41,7 @@ class TableViewCell: UITableViewCell {
     /// TableViewCell initailization
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        separatorInset = .zero
         setupViews()
         setupLayouts()
     }
@@ -56,7 +57,6 @@ class TableViewCell: UITableViewCell {
         contentView.addSubview(myImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
-        
     }
     
    /** Setting Constraint */
@@ -89,13 +89,12 @@ class TableViewCell: UITableViewCell {
     func setUpCellInfo(with modelData: Rows) {
         self.descriptionLabel.text = modelData.description
         self.titleLabel.text = modelData.title
-        
+
+        self.myImageView.image = UIImage(named: "placeholder")
         guard let imagePath = modelData.imageHref else {
-            self.myImageView.image = UIImage(named: "placeholder")
             return
         }
         guard let url = URL(string: imagePath) else {
-            self.myImageView.image = UIImage(named: "placeholder")
             return
         }
         if let imageFromCache = imageCache.object(forKey: modelData.imageHref as AnyObject) {
@@ -106,10 +105,8 @@ class TableViewCell: UITableViewCell {
             guard let data = data, error == nil else {
                 return
             }
-            
             DispatchQueue.main.async {[weak self] in
                 guard let imageToCache = UIImage(data: data) else {
-                    self?.myImageView.image = UIImage(named: "placeholder")
                     return
                 }
                 self?.imageCache.setObject(imageToCache, forKey: modelData.imageHref as AnyObject)
