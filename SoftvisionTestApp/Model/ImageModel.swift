@@ -7,14 +7,15 @@
 //
 
 import Foundation
+
 struct ImageModel: Codable {
     let title: String?
     let rows: [Rows]?
 
     enum CodingKeys: String, CodingKey {
 
-        case title = "title"
-        case rows = "rows"
+        case title
+        case rows 
     }
 
     init(from decoder: Decoder) throws {
@@ -22,5 +23,4 @@ struct ImageModel: Codable {
         title = try values.decodeIfPresent(String.self, forKey: .title)
         rows = try values.decodeIfPresent([Rows].self, forKey: .rows)
     }
-
 }
