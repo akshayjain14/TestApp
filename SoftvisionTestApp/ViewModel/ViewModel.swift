@@ -13,7 +13,7 @@ class ViewModel: NSObject {
     
     /// instance of NetworkServices
     private var apiService: NetworkServices!
-   
+    
     /// Model Data  from API Call
     private(set) var imageModel: ImageModel! {
         didSet {
@@ -32,7 +32,6 @@ class ViewModel: NSObject {
             } else {
                 HPGradientLoading.shared.dismiss()
             }
-           
         }
     }
     
@@ -48,13 +47,28 @@ class ViewModel: NSObject {
     ///Getting  details from API and responding to viewmodel handler
     func callFuncToGetModelData() {
         self.isLoading = true
-        self.apiService.apiToData { (data) in
-            self.imageModel = data
+        let resource = Resource(url: URL(string: CONSTANT.BASEURL.rawValue)!)
+        self.apiService.fetchData(resource) { (result) in
             DispatchQueue.main.async {
                 self.isLoading = false
             }
+            switch result {
+            case .success(let data):
+                do {
+                    guard let utf8Data = String(decoding: data, as: UTF8.self).data(using: .utf8) else {
+                        return
+                    }
+                    let items = try JSONDecoder().decode(ImageModel.self, from: utf8Data)
+                    self.imageModel = items
+                } catch {
+                    print("unable to decode")
+                     
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                
+            }
         }
-        
     }
     
 }

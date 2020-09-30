@@ -7,28 +7,45 @@
 //
 
 import Foundation
+struct Resource {
+let url: URL
+let method: String = "GET"
+}
 
+enum Result<T> {
+case success(T)
+case failure(Error)
+}
+
+enum APIClientError: String, Error {
+case noData = "Response returned with no data to decode."
+    
+}
+extension URLRequest {
+
+init(_ resource: Resource) {
+    self.init(url: resource.url)
+    self.httpMethod = resource.method
+}
+
+}
 ///Network Seervice Class
 class NetworkServices: NSObject {
  /// URLsession Call to fetch data from API
-func apiToData(completion : @escaping (ImageModel) -> Void) {
+func fetchData(_ resource: Resource, result: @escaping ((Result<Data>) -> Void)) {
+        let request = URLRequest(resource)
+        let task = URLSession.shared.dataTask(with: request) { (data, _, error) in
+            guard let `data` = data else {
+                result(.failure(APIClientError.noData))
+                return
+            }
+            if let `error` = error {
+                result(.failure(error))
+                return
+            }
+            result(.success(data))
+        }
+        task.resume()
     
-    guard let url = URL(string: CONSTANT.BASEURL.rawValue) else {
-        return
-    }
-    
-    URLSession.shared.dataTask(with: url) { (data, _, _) in
-           if let data = data {
-               let jsonDecoder = JSONDecoder()
-               guard let utf8Data = String(decoding: data, as: UTF8.self).data(using: .utf8) else {
-                   return
-               }
-            
-               let fetchedData = try? jsonDecoder.decode(ImageModel.self, from: utf8Data)
-           
-            completion(fetchedData!)
-           }
-           
-       }.resume()
-   }
+}
 }
