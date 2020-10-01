@@ -8,11 +8,6 @@
 
 import UIKit
 
-enum CONSTANT: String {
-    case BASEURL = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-    case cellID = "myCell"
-}
-
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     /// TableView Object
     let infoTableView = UITableView()
@@ -48,7 +43,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         infoTableView.dataSource = self
         infoTableView.delegate = self
-        infoTableView.register(TableViewCell.self, forCellReuseIdentifier: CONSTANT.cellID.rawValue)
+        infoTableView.register(TableViewCell.self, forCellReuseIdentifier: CellIdentifiers.CellID)
         self.infoTableView.addSubview(self.refreshControl)
         callToViewModelForUIUpdate()
     }
@@ -86,7 +81,7 @@ extension ViewController {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // swiftlint:disable force_cast
-        let cell = tableView.dequeueReusableCell(withIdentifier: CONSTANT.cellID.rawValue, for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifiers.CellID, for: indexPath) as! TableViewCell
         // swiftlint:enable force_cast
         cell.setUpCellInfo(with: self.imageModelData[indexPath.row])
         return cell

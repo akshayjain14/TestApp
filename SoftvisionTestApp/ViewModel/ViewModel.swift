@@ -47,7 +47,7 @@ class ViewModel: NSObject {
     ///Getting  details from API and responding to viewmodel handler
     func callFuncToGetModelData() {
         self.isLoading = true
-        let resource = Resource(url: URL(string: CONSTANT.BASEURL.rawValue)!)
+        let resource = Resource(url: URL(string: ApplicationURL.BaseUrl)!)
         self.apiService.fetchData(resource) { (result) in
             DispatchQueue.main.async {
                 self.isLoading = false
