@@ -89,43 +89,14 @@ class TableViewCell: UITableViewCell {
     func setUpCellInfo(with modelData: Rows) {
         self.descriptionLabel.text = modelData.description
         self.titleLabel.text = modelData.title
-
         self.myImageView.image = UIImage(named: "placeholder")
         guard let imagePath = modelData.imageHref else {
             return
         }
-        guard let url = URL(string: imagePath) else {
-            return
-        }
-        if let imageFromCache = imageCache.object(forKey: modelData.imageHref as AnyObject) {
-            self.myImageView.image = imageFromCache as? UIImage
-            return
-        }
-        getData(from: url) { data, _, error in
-            guard let data = data, error == nil else {
-                return
-            }
-            DispatchQueue.main.async {[weak self] in
-                guard let imageToCache = UIImage(data: data) else {
-                    return
-                }
-                self?.imageCache.setObject(imageToCache, forKey: modelData.imageHref as AnyObject)
-                self?.myImageView.image = UIImage(data: data)
-            }
-        }
+        self.myImageView.setImage(from: imagePath)
     }
-    
-    /** getData
-     - Parameters :
-     - url : Url to fetch image
-     - completion : Closure
-    
-    */
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-    
-   ///Reset the cell before reuse
+   
+    ///Reset the cell before reuse
     
     override func prepareForReuse() {
         super.prepareForReuse()

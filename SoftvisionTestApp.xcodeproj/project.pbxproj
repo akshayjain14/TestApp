@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C84975884213E788B226DF5 /* Pods_SoftvisionTestAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4631E073C5284D98EC5B40B /* Pods_SoftvisionTestAppTests.framework */; };
 		510B71EA2525CCA10000FF4E /* ApplicationConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510B71E92525CCA10000FF4E /* ApplicationConstant.swift */; };
+		518A203E2529F25200F89D95 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 518A203D2529F25200F89D95 /* CustomExtensions.swift */; };
 		51A8A1E7251B60B6007699FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8A1E6251B60B6007699FF /* AppDelegate.swift */; };
 		51A8A1F0251B60CC007699FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A8A1EF251B60CC007699FF /* Assets.xcassets */; };
 		51A8A1F3251B60CC007699FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A8A1F1251B60CC007699FF /* LaunchScreen.storyboard */; };
@@ -36,6 +37,7 @@
 		02DFAE258C3AF7B2E9FB1896 /* Pods_SoftvisionTestApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SoftvisionTestApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		355B7F9999F5A2F4D275DCD7 /* Pods-SoftvisionTestAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoftvisionTestAppTests.release.xcconfig"; path = "Target Support Files/Pods-SoftvisionTestAppTests/Pods-SoftvisionTestAppTests.release.xcconfig"; sourceTree = "<group>"; };
 		510B71E92525CCA10000FF4E /* ApplicationConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConstant.swift; sourceTree = "<group>"; };
+		518A203D2529F25200F89D95 /* CustomExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
 		51A8A1E3251B60B6007699FF /* SoftvisionTestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoftvisionTestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51A8A1E6251B60B6007699FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51A8A1EF251B60CC007699FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				510B71E92525CCA10000FF4E /* ApplicationConstant.swift */,
+				518A203D2529F25200F89D95 /* CustomExtensions.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				51A8A204251B65F3007699FF /* TableViewCell.swift in Sources */,
 				51A8A207251B6658007699FF /* ImageModel.swift in Sources */,
 				510B71EA2525CCA10000FF4E /* ApplicationConstant.swift in Sources */,
+				518A203E2529F25200F89D95 /* CustomExtensions.swift in Sources */,
 				51A8A209251B6668007699FF /* Rows.swift in Sources */,
 				51A8A1FE251B6303007699FF /* NetworkServices.swift in Sources */,
 				51A8A1FB251B619F007699FF /* ViewController.swift in Sources */,
